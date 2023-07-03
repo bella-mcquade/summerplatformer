@@ -36,6 +36,9 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetMouseButton(0) && cooldown > attackCool && playermovement.canAttack()) //If the mouse is clicked
         {
             Attack(); //Could just put this here?
+        } else
+        {
+            anim.ResetTrigger("attack");
         }
 
         cooldown += Time.deltaTime; //Incrememnt every frame
@@ -45,12 +48,15 @@ public class PlayerAttack : MonoBehaviour
     {
         cooldown = 0;
 
+        anim.SetTrigger("attack");
+        //anim.ResetTrigger("attack");
+        //anim.SetBool("attack", false);
         //Use object pooling to keep performance good.
-        projectiles[findProjectile()].transform.position = startPoint.position;
-        projectiles[findProjectile()].GetComponent<AcornProjectile>().setDirection(Mathf.Sign(transform.localScale.x));
+        //projectiles[findProjectile()].transform.position = startPoint.position;
+        //projectiles[findProjectile()].GetComponent<AcornProjectile>().setDirection(Mathf.Sign(transform.localScale.x));
     }
 
-    //Returns the index of the first non active projectile
+    /*//Returns the index of the first non active projectile
     private int findProjectile()
     {
         for (int i = 0; i < projectiles.Length; i++)
@@ -61,5 +67,5 @@ public class PlayerAttack : MonoBehaviour
             }
         }
         return 0;
-    }
+    }*/
 }

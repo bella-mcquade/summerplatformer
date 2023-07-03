@@ -10,19 +10,37 @@ public class PlayerRespawn : MonoBehaviour
     //The player's health
     private Health playerHealth;
 
+    //Animation of the player
+    private Animator anim;
+
+    //The UI manager for the game over screen
+    private UIManager UI;
+
     private void Start()
     {
         playerHealth = GetComponent<Health>();
-        currCheckpoint = transform; //Set the first "checkpoint" to be current pos
+        anim = GetComponent<Animator>();
+        UI = FindObjectOfType<UIManager>(); //Looks through full hierarchy. Don't use if it has duplicates. Do not call in update - inefficient.
     }
 
     public void respawn()
     {
-        transform.position = currCheckpoint.position;
-        playerHealth.healthRespawn();
+        if (currCheckpoint == null) //No current checkpoint
+        {
+            //show game over screen
+            UI.gameOver();
+        }
+        else
+        {
 
-        //Move camera to checkpoint as well (Checkpoint needs to be child of room object)
-        //Camera.main.GetComponent<CameraController>().moveToNewRoom(currCheckpoint.parent);
+            transform.position = currCheckpoint.position;
+            playerHealth.healthRespawn();
+
+            anim.ResetTrigger("death");
+            anim.Play("PlayerIdle");
+            //Move camera to checkpoint as well (Checkpoint needs to be child of room object)
+            Camera.main.GetComponent<CameraController>().moveToNewRoom(currCheckpoint.parent, false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

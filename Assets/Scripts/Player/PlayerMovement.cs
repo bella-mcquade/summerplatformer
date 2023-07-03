@@ -10,8 +10,16 @@ public class PlayerMovement : MonoBehaviour
 
     //Creates the body object
     private Rigidbody2D body;
+
+    //The collider of this player
     private BoxCollider2D boxCol;
-    float horizontalInput;
+
+    //The amount of left/right user input 
+    private float horizontalInput;
+
+    //The animator of the player
+    private Animator anim;
+
     //private bool onGround;
 
     //Called when script is loaded. Basically constructor/initlializer?
@@ -20,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
         Debug.Log("Loading up the game");
         body = GetComponent<Rigidbody2D>();
         boxCol = GetComponent<BoxCollider2D>();
+        anim = GetComponent<Animator>();
         body.freezeRotation = true;
 
         //onGround = true;
@@ -47,6 +56,10 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, jump);
             //body.AddForce(new Vector2(body.velocity.x, jump ));
         }
+
+        //Sets to run to if there is horizontal input. Triggers run animation if true.
+        anim.SetBool("run", horizontalInput != 0);
+        //Debug.Log(horizontalInput != 0);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,6 +83,6 @@ public class PlayerMovement : MonoBehaviour
      * script can access it.*/
     public bool canAttack()
     {
-        return horizontalInput == 0 && onGround();
+        return true; //horizontalInput == 0 && onGround(); movement not a problem
     }
 }

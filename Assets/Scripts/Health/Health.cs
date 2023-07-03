@@ -21,11 +21,15 @@ public class Health : MonoBehaviour
     //The sprite that we are changing the color of
     private SpriteRenderer sprite;
 
+    //The animator of the player
+    private Animator anim;
+
     //Sets health to max upon start.
     private void Awake()
     {
         currHealth = startHealth;
         sprite = GetComponent<SpriteRenderer>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -49,10 +53,10 @@ public class Health : MonoBehaviour
         } else
         {
             //player dead animation
+            anim.SetTrigger("death");
             GetComponent<PlayerMovement>().enabled = false;
-
             //Do this for now but delete later once you do the animations.
-            GetComponent<PlayerRespawn>().respawn();
+            //GetComponent<PlayerRespawn>().respawn();
 
         }
     }

@@ -56,7 +56,7 @@ public class AcornProjectile : MonoBehaviour
         boxCol.enabled = false;
         Deactivate();
 
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             collision.GetComponent<Health>()?.takeDamage(damage);
         }
