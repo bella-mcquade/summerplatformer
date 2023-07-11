@@ -124,8 +124,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c65fd2a5237c4c2ba525e4d9336698d
-      internalID: -1122416477
+      spriteID: 209bdedce54164fbfbbad71677b6585d
+      internalID: -1032967240
       vertices: []
       indices: 
       edges: []
@@ -145,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 521624b6e801e407d8d4c389619b7eed
-      internalID: -2029643456
+      spriteID: 0d37def92073f4e5f8307e97e967515c
+      internalID: 514331839
       vertices: []
       indices: 
       edges: []
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74449c876d2934238aa7fa5bcbe97503
-      internalID: 331682161
+      spriteID: a03c4f9e5a4a04e0b8bd411eece68aed
+      internalID: 1345807358
       vertices: []
       indices: 
       edges: []
@@ -187,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 197872acba3194d4faf1061ed745e1f1
-      internalID: 1190821600
+      spriteID: c68c7ea4373da457a9a30b66805370c6
+      internalID: -92995443
       vertices: []
       indices: 
       edges: []
@@ -204,10 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Thorns 1_0: -1122416477
-      Thorns 1_1: -2029643456
-      Thorns 1_2: 331682161
-      Thorns 1_3: 1190821600
+      Thorns 1_0: -1032967240
+      Thorns 1_1: 514331839
+      Thorns 1_2: 1345807358
+      Thorns 1_3: -92995443
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

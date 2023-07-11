@@ -15,7 +15,7 @@ public class SelectionArrow : MonoBehaviour
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
-        currPos = 0;
+        changePos(0); //Starts the position at pos 0.
     }
 
     private void Update()
@@ -27,7 +27,7 @@ public class SelectionArrow : MonoBehaviour
 
         } else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
-            changePos( 1); //INCREASE pos to go down
+            changePos(1); //INCREASE pos to go down
         }
 
         //Interacts with selection

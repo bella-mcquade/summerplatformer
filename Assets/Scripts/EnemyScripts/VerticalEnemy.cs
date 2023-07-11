@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HorizontalEnemy : MonoBehaviour
+public class VerticalEnemy : MonoBehaviour
 {
-    [Header("Horizontal Movement")]
+    [Header("Vertical Movement")]
     //How much damage the enemy does
     [SerializeField] private float damage;
 
@@ -14,53 +14,50 @@ public class HorizontalEnemy : MonoBehaviour
     //How fast the enemy moves at rest
     [SerializeField] private float idleSpeed;
 
-    //If the enemy is moving left
-    private bool movingLeft;
+    //If the enemy is moving down
+    private bool movingDown;
 
     //The left edge of the enemy range
-    private float leftEdge;
+    private float topEdge;
 
     //The right edge of the enemy range
-    private float rightEdge;
-
-    //The layer that the player is on
-    [SerializeField] private LayerMask playerLayer;
+    private float bottomEdge;
 
     // Start is called before the first frame update
     void Awake()
     {
-        leftEdge = transform.position.x - movementDistance;
-        rightEdge = transform.position.x + movementDistance;
+        bottomEdge = transform.position.y - movementDistance;
+        topEdge = transform.position.y + movementDistance;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (movingLeft)
+        if (movingDown)
         {
 
-            if (transform.position.x > leftEdge)
+            if (transform.position.y > bottomEdge)
             {
-                transform.position = new Vector2(transform.position.x - idleSpeed * Time.deltaTime, transform.position.y);
+                transform.position = new Vector2(transform.position.x, transform.position.y - idleSpeed * Time.deltaTime);
                 transform.localScale = new Vector3(1f, 1f, 1f); ;
             }
             else
             {
-                movingLeft = false;
+                movingDown = false;
             }
 
         }
-        else //Moving right
+        else //Moving Up
         {
 
-            if (transform.position.x < rightEdge)
+            if (transform.position.y < topEdge)
             {
-                transform.position = new Vector2(transform.position.x + idleSpeed * Time.deltaTime, transform.position.y);
-                transform.localScale = new Vector3(-1f, 1f, 1f);
+                transform.position = new Vector2(transform.position.x, transform.position.y + idleSpeed * Time.deltaTime);
+                transform.localScale = new Vector3(1f, -1f, 1f);
             }
             else
             {
-                movingLeft = true;
+                movingDown = true;
             }
 
         }
