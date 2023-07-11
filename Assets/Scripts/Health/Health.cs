@@ -32,13 +32,6 @@ public class Health : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-            takeDamage(1);
-    }
-
     //Allows enemies to damage player.
     public void takeDamage(float damage)
     {

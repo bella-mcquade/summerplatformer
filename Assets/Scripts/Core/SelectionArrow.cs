@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectionArrow : MonoBehaviour
 {
@@ -14,10 +15,12 @@ public class SelectionArrow : MonoBehaviour
     private void Awake()
     {
         rect = GetComponent<RectTransform>();
+        currPos = 0;
     }
 
     private void Update()
     {
+        //Moves arrow up and down
         if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
         {
             changePos(-1); //Needs to DECREASE pos to go up
@@ -25,6 +28,15 @@ public class SelectionArrow : MonoBehaviour
         } else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             changePos( 1); //INCREASE pos to go down
+        }
+
+        //Interacts with selection
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            //Debug.Log("Space has been clicked");
+            //Play sound
+            //Access button component
+            options[currPos].GetComponent<Button>().onClick.Invoke();
         }
     }
 

@@ -10,8 +10,8 @@ public class PlayerAttack : MonoBehaviour
     //The start point of the projectile's movement.
     [SerializeField] private Transform startPoint;
 
-    //Helps with object pooling.
-    [SerializeField] private GameObject[] projectiles;
+    //The amount of damage the player does
+    [SerializeField] private float playerDamage;
 
     //The cooldown counter. Increments every update.
     private float cooldown;
@@ -21,6 +21,9 @@ public class PlayerAttack : MonoBehaviour
 
     //Animation object
     private Animator anim;
+
+    //The enemy that we are attacking
+    private GameObject enemy;
 
     //Basically constructor
     private void Awake()
@@ -49,6 +52,11 @@ public class PlayerAttack : MonoBehaviour
         cooldown = 0;
 
         anim.SetTrigger("attack");
+
+        if (enemy != null)
+        {
+            enemy.GetComponent<Health>().takeDamage(playerDamage);
+        }
         //anim.ResetTrigger("attack");
         //anim.SetBool("attack", false);
         //Use object pooling to keep performance good.

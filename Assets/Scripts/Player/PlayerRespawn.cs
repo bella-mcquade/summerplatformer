@@ -29,7 +29,7 @@ public class PlayerRespawn : MonoBehaviour
         {
             //show game over screen
             UI.gameOver();
-        }
+        } 
         else
         {
 
@@ -54,6 +54,8 @@ public class PlayerRespawn : MonoBehaviour
 
             //Do the animation
             collision.GetComponent<Animator>().SetTrigger("appear");
+
+            playerHealth.addHealth(100); //Over max health to make sure
         }
     }
 
