@@ -30,6 +30,8 @@ public class SwingEnemy : MonoBehaviour
     private float center;
 
     //The starting yPosition of the enemy.
+    private float topY;
+
     private float initY;
 
     // Start is called before the first frame update
@@ -39,6 +41,7 @@ public class SwingEnemy : MonoBehaviour
         rightEdge = transform.position.x + movementDistance;
         center = transform.position.x;
         initY = transform.position.y;
+        topY = transform.position.y + (rightEdge - center) * (rightEdge - center);
         movingLeft = true;
     }
 
@@ -46,25 +49,29 @@ public class SwingEnemy : MonoBehaviour
     void Update()
     {
         float distFromCenter = transform.position.x - center;
-        float xSquared = (transform.position.x - center) * (transform.position.x - center);
 
-        if (movingLeft)
+        if(movingLeft)
         {
 
             if (transform.position.x > leftEdge)
             {
-                //trans.x - center = x
                 float xPos = transform.position.x - idleSpeed * Time.deltaTime;
-                if (transform.position.x > center) //y going down
+                if (transform.position.x < center + 0.5 && transform.position.x > center - 0.5)
+                {
+                    transform.position = new Vector2(xPos, initY); //Resets y position
+
+                } else if (transform.position.x > center) //y going down
                 {
                     transform.position = new Vector2(xPos, transform.position.y -
-                        (xSquared * Time.deltaTime) / shallowness);
+                        (distFromCenter * distFromCenter * Time.deltaTime) / shallowness);
+
                     transform.localScale = new Vector3(1f, 1f, 1f);
 
                 } else //y going up
                 {
                     transform.position = new Vector2(xPos, transform.position.y +
-                        (xSquared * Time.deltaTime) / shallowness);
+                        (distFromCenter * distFromCenter * Time.deltaTime) / shallowness);
+
                     transform.localScale = new Vector3(1f, 1f, 1f);
                 }
             }
@@ -80,17 +87,23 @@ public class SwingEnemy : MonoBehaviour
             if (transform.position.x < rightEdge)
             {
                 float xPos = transform.position.x + idleSpeed * Time.deltaTime;
-                if(transform.position.x > center) //y going up
+                if (transform.position.x < center + 0.5 && transform.position.x > center - 0.5)
+                {
+                    transform.position = new Vector2(xPos, initY); //Resets y position
+                }
+                else if (transform.position.x > center) //y going up
                 {
                     transform.position = new Vector2(xPos, transform.position.y +
-                        (xSquared * Time.deltaTime) / shallowness);
+                        (distFromCenter * distFromCenter * Time.deltaTime) / shallowness);
+
                     transform.localScale = new Vector3(-1f, 1f, 1f);
 
                 }
                 else //y going down
                 {
                     transform.position = new Vector2(xPos, transform.position.y -
-                        (xSquared * Time.deltaTime) / shallowness);
+                        (distFromCenter * distFromCenter * Time.deltaTime) / shallowness);
+
                     transform.localScale = new Vector3(-1f, 1f, 1f);
                 }
             }
