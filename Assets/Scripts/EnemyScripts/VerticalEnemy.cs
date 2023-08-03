@@ -28,6 +28,7 @@ public class VerticalEnemy : MonoBehaviour
     {
         bottomEdge = transform.position.y - movementDistance;
         topEdge = transform.position.y + movementDistance;
+        GetComponent<SpriteRenderer>().enabled = true; //helps make sure items always start active
     }
 
     // Update is called once per frame
@@ -39,7 +40,7 @@ public class VerticalEnemy : MonoBehaviour
             if (transform.position.y > bottomEdge)
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y - idleSpeed * Time.deltaTime);
-                transform.localScale = new Vector3(1f, 1f, 1f); ;
+                //transform.localScale = new Vector3(1f, 1f, 1f); ;
             }
             else
             {
@@ -53,7 +54,7 @@ public class VerticalEnemy : MonoBehaviour
             if (transform.position.y < topEdge)
             {
                 transform.position = new Vector2(transform.position.x, transform.position.y + idleSpeed * Time.deltaTime);
-                transform.localScale = new Vector3(1f, -1f, 1f);
+                //transform.localScale = new Vector3(1f, -1f, 1f);
             }
             else
             {
@@ -63,7 +64,7 @@ public class VerticalEnemy : MonoBehaviour
         }
     }
 
-    protected void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {

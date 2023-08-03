@@ -16,6 +16,8 @@ public class PlayerRespawn : MonoBehaviour
     //The UI manager for the game over screen
     private UIManager UI;
 
+    private ItemBehavior items;
+
     private void Start()
     {
         playerHealth = GetComponent<Health>();
@@ -32,7 +34,7 @@ public class PlayerRespawn : MonoBehaviour
         } 
         else
         {
-
+            items.onRespawn(currCheckpoint);
             transform.position = currCheckpoint.position;
             playerHealth.healthRespawn();
 

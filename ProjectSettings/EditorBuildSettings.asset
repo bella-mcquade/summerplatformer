@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ForestLvl1.unity
     guid: 2a4394593fe8441a7922d9efd47f7941
+  - enabled: 1
+    path: Assets/Scenes/GreyForestGod.unity
+    guid: 3e0535d8c0c654c5f8693f3234c12b91
   m_configObjects: {}

@@ -72,6 +72,16 @@ public class Health : MonoBehaviour
         GetComponent<PlayerMovement>().enabled = true;
     }
 
+    public void changeMaxHealth(float maxChange)
+    {
+        startHealth -= maxChange;
+
+        if (startHealth < currHealth)
+        {
+            currHealth = startHealth;
+        }
+    }
+
     private IEnumerator invulnerability()
     {
         Physics2D.IgnoreLayerCollision(7, 8, true);
