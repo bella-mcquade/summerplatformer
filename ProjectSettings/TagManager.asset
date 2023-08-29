@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - Ground
   - Checkpoint
+  - Breakable
   layers:
   - Default
   - TransparentFX

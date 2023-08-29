@@ -34,7 +34,7 @@ public class PlayerRespawn : MonoBehaviour
         } 
         else
         {
-            items.onRespawn(currCheckpoint);
+            //items.onRespawn(currCheckpoint);
             transform.position = currCheckpoint.position;
             playerHealth.healthRespawn();
 

@@ -5,16 +5,16 @@ using UnityEngine;
 public class AcornProjectile : MonoBehaviour
 {
     //The speed of the projectile
-    [SerializeField] float speed;
+    [SerializeField] private float speed;
 
     //The damage of the projectile
-    [SerializeField] float damage;
+    [SerializeField] private float damage;
 
     //If it has hit something or not. For now, probably don't need but can use to implement acorn rolling later.
     private bool hit;
 
     //The direction that the projectile will be moving.
-    private float direction;
+    [SerializeField] private float direction; //ONLY SERIALIZABLE FOR NOW. LATER LINK TO ACORNGUNNER SCALE
 
     //The lifetime of the acorn if it does not hit something.
     private float lifetime;
