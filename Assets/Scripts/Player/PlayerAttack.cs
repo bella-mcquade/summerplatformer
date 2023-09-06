@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
 {
+    //The amount of damage the player does.
+    [SerializeField] private float playerDamage;
+
     //A given variable that is how long between each attack
     [SerializeField] private float attackCool;
 
     //The start point of the projectile's movement.
     [SerializeField] private Transform startPoint;
 
-    //The amount of damage the player does
-    [SerializeField] private float playerDamage;
+    //Helps with object pooling.
+    [SerializeField] private GameObject[] projectiles;
 
     //The cooldown counter. Increments every update.
     private float cooldown;
@@ -51,20 +54,20 @@ public class PlayerAttack : MonoBehaviour
     {
         cooldown = 0;
 
-        anim.SetTrigger("attack");
+        //anim.SetTrigger("attack");
 
-        if (enemy != null)
+        /*if (enemy != null)
         {
             enemy.GetComponent<Health>().takeDamage(playerDamage);
-        }
+        }*/
         //anim.ResetTrigger("attack");
         //anim.SetBool("attack", false);
         //Use object pooling to keep performance good.
-        //projectiles[findProjectile()].transform.position = startPoint.position;
-        //projectiles[findProjectile()].GetComponent<AcornProjectile>().setDirection(Mathf.Sign(transform.localScale.x));
+        projectiles[findProjectile()].transform.position = startPoint.position;
+        projectiles[findProjectile()].GetComponent<BaseProjectile>().setDirection(Mathf.Sign(transform.localScale.x));
     }
 
-    /*//Returns the index of the first non active projectile
+    //Returns the index of the first non active projectile
     private int findProjectile()
     {
         for (int i = 0; i < projectiles.Length; i++)
@@ -75,5 +78,5 @@ public class PlayerAttack : MonoBehaviour
             }
         }
         return 0;
-    }*/
+    }
 }

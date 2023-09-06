@@ -23,8 +23,6 @@ public class SwoopAttack : EnemyDamage
     //The speed of the enemy
     [SerializeField] protected float speed;
 
-    //private Vector3[] directions = new Vector3[8]; //Up down left right and the corners
-
     //Stores the coordinates of the detected player
     private Vector3 dest;
 

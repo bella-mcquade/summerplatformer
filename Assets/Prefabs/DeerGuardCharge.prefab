@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8129947049288229343}
   - component: {fileID: 6712198045052280517}
   - component: {fileID: 764449874416232183}
-  - component: {fileID: 430989001891516990}
+  - component: {fileID: 8975435651657581745}
   m_Layer: 8
   m_Name: DeerGuardCharge
   m_TagString: Enemy
@@ -152,7 +152,7 @@ MonoBehaviour:
   idleSpeed: 3
   attackSpeed: 10
   range: 6
-  cooldown: 2
+  cooldown: 0
   playerLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -177,7 +177,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &430989001891516990
+--- !u!114 &8975435651657581745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,12 +186,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4670323820311286178}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 287f22f47318545d1939aa2cf987b78b, type: 3}
+  m_Script: {fileID: 11500000, guid: 30b1d415e00b74957a454a44a9c487ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 5
-  iDuration: 0
-  numFlash: 0
+  iDuration: 1
+  numFlash: 2
 --- !u!1 &6824073523129600019
 GameObject:
   m_ObjectHideFlags: 0

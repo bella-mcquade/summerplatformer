@@ -14,7 +14,7 @@ public class AcornProjectile : MonoBehaviour
     private bool hit;
 
     //The direction that the projectile will be moving.
-    [SerializeField] private float direction; //ONLY SERIALIZABLE FOR NOW. LATER LINK TO ACORNGUNNER SCALE
+    //[SerializeField] private float direction; //ONLY SERIALIZABLE FOR NOW. LATER LINK TO ACORNGUNNER SCALE
 
     //The lifetime of the acorn if it does not hit something.
     private float lifetime;
@@ -38,9 +38,8 @@ public class AcornProjectile : MonoBehaviour
     {
         if (hit) return;
 
-        float movementSpeed = speed * Time.deltaTime * direction;
+        float movementSpeed = -speed * Time.deltaTime;
         transform.Translate(movementSpeed, 0, 0);
-        //transform.Rotate(transform.rotation.x, transform.rotation.y, -1);
 
         lifetime += Time.deltaTime;
         if (lifetime > 10)
@@ -65,7 +64,7 @@ public class AcornProjectile : MonoBehaviour
     //Creates a projectile and sets the direction to the given direction.
     public void setDirection(float dir)
     {
-        direction = dir;
+        //direction = dir;
         hit = false;
         boxCol.enabled = true;
         lifetime = 0;

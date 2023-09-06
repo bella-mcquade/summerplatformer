@@ -83,6 +83,6 @@ public class PlayerMovement : MonoBehaviour
      * script can access it.*/
     public bool canAttack()
     {
-        return true; //horizontalInput == 0 && onGround(); movement not a problem
+        return horizontalInput == 0; //&& onGround(); //movement not a problem
     }
 }

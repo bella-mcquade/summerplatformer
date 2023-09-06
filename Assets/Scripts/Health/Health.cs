@@ -45,12 +45,7 @@ public class Health : MonoBehaviour
 
         } else
         {
-            //player dead animation
-            anim.SetTrigger("death");
-            GetComponent<PlayerMovement>().enabled = false;
-            //Do this for now but delete later once you do the animations.
-            //GetComponent<PlayerRespawn>().respawn();
-
+            death();
         }
     }
 
@@ -80,6 +75,15 @@ public class Health : MonoBehaviour
         {
             currHealth = startHealth;
         }
+    }
+
+    private void death()
+    {
+        //player dead animation
+        anim.SetTrigger("death");
+        GetComponent<PlayerMovement>().enabled = false;
+        //Do this for now but delete later once you do the animations.
+        //GetComponent<PlayerRespawn>().respawn();
     }
 
     private IEnumerator invulnerability()

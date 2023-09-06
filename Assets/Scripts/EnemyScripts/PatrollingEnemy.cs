@@ -76,7 +76,7 @@ public class PatrollingEnemy : MonoBehaviour
             if (transform.position.x > leftEdge)
             {
                 transform.position = new Vector2(transform.position.x - currSpeed * Time.deltaTime, transform.position.y);
-                transform.localScale = new Vector3(1f, 1f, 1f); ;
+                transform.localScale = new Vector3(1f, 1f, 1f);
             }
             else
             {
@@ -104,12 +104,9 @@ public class PatrollingEnemy : MonoBehaviour
 
     private void checkForPlayer(Vector3 direction)
     {
-        //Debug.Log("dir 1: " + direction);
         RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector3(1f, 1f, 1f), 0, direction, range, playerLayer);
-        //RaycastHit2D hit2 = Physics2D.BoxCast(transform.position, new Vector3(1f, 1f, 1f), 0, -direction, range, playerLayer);
-        if (hit.collider != null && !attacking) //|| hit2.collider != null)
+        if (hit.collider != null && !attacking)
         {
-            Debug.Log("dir 2: " + direction);
             attacking = true;
             cooldownTimer = 0;
         }
