@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float jump;
     [SerializeField] private LayerMask groundLayer;
 
+    [SerializeField] private AudioClip sound;
+
     //Creates the body object
     private Rigidbody2D body;
 
@@ -53,6 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Handles jumping
         if(Input.GetAxisRaw("Vertical") > 0.5 && onGround()){
+            SoundManager.instance.playSound(sound);
             body.velocity = new Vector2(body.velocity.x, jump);
             //body.AddForce(new Vector2(body.velocity.x, jump ));
         }

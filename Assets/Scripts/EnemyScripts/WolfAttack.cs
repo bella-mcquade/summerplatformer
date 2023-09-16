@@ -16,10 +16,15 @@ public class WolfAttack : EnemyDamage
     //The speed of the enemy
     [SerializeField] private float speed;
 
+    [SerializeField] private float idleCooldown;
+
     //How high the wolf can jump
     [SerializeField] private float jump;
 
     private bool attacking;
+
+    //Keeps track of how long since the cooldown has reset.
+    private float cooldownTimer;
 
     private Rigidbody2D body;
 
@@ -32,16 +37,37 @@ public class WolfAttack : EnemyDamage
         body = GetComponent<Rigidbody2D>();
         body.freezeRotation = true;
         boxCol = GetComponent<BoxCollider2D>();
+        cooldownTimer = Mathf.Infinity;
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Randomly turns enemy around after cooldown. Idle movement.
+        /*if (!attacking && cooldownTimer > idleCooldown) {
+            cooldownTimer = 0;
+            if (Random.Range(0, 2) == 0)
+            {
+                speed = -speed;
+                //transform.localScale = transform.localScale * (new Vector3(-1f, 1f, 1f));
+            }
+        }*/
+
+        cooldownTimer += Time.deltaTime;
+
         transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+        checkForPlayer(-transform.right);
+        checkForPlayer(transform.right);
+
         if (onGround())
         {
             //body.velocity = new Vector2(body.velocity.x, jump);
-            checkForGround(-transform.right);
+            if (speed > 0) {
+                checkForGround(-transform.right);
+            } else
+            {
+                checkForGround(transform.right);
+            }
         }
     }
 
@@ -51,6 +77,7 @@ public class WolfAttack : EnemyDamage
         if (hit.collider != null && !attacking)
         {
             attacking = true;
+            speed = speed * -Mathf.Sign(direction.x);
             //cooldownTimer = 0;
         }
         else

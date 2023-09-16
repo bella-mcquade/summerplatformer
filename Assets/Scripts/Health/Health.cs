@@ -8,6 +8,9 @@ public class Health : MonoBehaviour
     //The health at the start of the level?
     [SerializeField] private float startHealth;
 
+    //The sound it makes when you are hit
+    [SerializeField] private AudioClip sound;
+
     //Tracks the current health of the object. Get == anyone can access, private set == only can change from here
     public float currHealth { get; private set; }
 
@@ -35,6 +38,7 @@ public class Health : MonoBehaviour
     //Allows enemies to damage player.
     public void takeDamage(float damage)
     {
+        SoundManager.instance.playSound(sound);
         //Basically caps currHealth - damage at 0 or startHealth
         currHealth = Mathf.Clamp(currHealth - damage, 0, startHealth);
 

@@ -16,6 +16,9 @@ public class PlayerAttack : MonoBehaviour
     //Helps with object pooling.
     [SerializeField] private GameObject[] projectiles;
 
+    //The audio that plays when the player fires a projectile
+    [SerializeField] private AudioClip sound;
+
     //The cooldown counter. Increments every update.
     private float cooldown;
 
@@ -53,6 +56,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         cooldown = 0;
+        SoundManager.instance.playSound(sound);
 
         //anim.SetTrigger("attack");
 

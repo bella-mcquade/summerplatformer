@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerRespawn : MonoBehaviour
 {
+    //The sound it makes when you activate a checkpoint
+    [SerializeField] private AudioClip sound;
+
     //Stores coordinates of the last checkpoint
     private Transform currCheckpoint;
 
@@ -49,6 +52,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (collision.transform.tag == "Checkpoint")
         {
+            SoundManager.instance.playSound(sound);
             currCheckpoint = collision.transform;
 
             //Once activated can't be activated again. Disable collider.
