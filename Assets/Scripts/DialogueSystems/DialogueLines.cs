@@ -17,8 +17,8 @@ namespace DialogueSystems
         [SerializeField] private float btwnLines;
 
         [Header("CharacterImage")]
-        [SerializeField] private Sprite charImage;
-        [SerializeField] private Image imageHolder;
+        //[SerializeField] private Sprite charImage;
+        //[SerializeField] private Image imageHolder;
 
         private Text textholder;
 
@@ -27,8 +27,8 @@ namespace DialogueSystems
             textholder = GetComponent<Text>();
             textholder.text = ""; //make sure its empty
 
-            imageHolder.sprite = charImage;
-            imageHolder.preserveAspect = true;
+            //imageHolder.sprite = charImage;
+            //imageHolder.preserveAspect = true;
         }
 
         public void Start()
