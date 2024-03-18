@@ -23,6 +23,14 @@ public class WolfAttack : EnemyDamage
 
     private bool attacking;
 
+    private bool movingLeft;
+
+    //The left edge of the enemy range
+    private float leftEdge;
+
+    //The right edge of the enemy range
+    private float rightEdge;
+
     //Keeps track of how long since the cooldown has reset.
     private float cooldownTimer;
 
@@ -38,13 +46,18 @@ public class WolfAttack : EnemyDamage
         body.freezeRotation = true;
         boxCol = GetComponent<BoxCollider2D>();
         cooldownTimer = Mathf.Infinity;
+
+
+        movingLeft = true;
+        leftEdge = transform.position.x - range;
+        rightEdge = transform.position.x + range;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Randomly turns enemy around after cooldown. Idle movement.
-        /*if (!attacking && cooldownTimer > idleCooldown) {
+        /*//Randomly turns enemy around after cooldown. Idle movement.
+        if (!attacking && cooldownTimer > idleCooldown) {
             cooldownTimer = 0;
             if (Random.Range(0, 2) == 0)
             {
@@ -53,11 +66,46 @@ public class WolfAttack : EnemyDamage
             }
         }*/
 
-        cooldownTimer += Time.deltaTime;
+        /*cooldownTimer += Time.deltaTime;
 
-        transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
-        checkForPlayer(-transform.right);
-        checkForPlayer(transform.right);
+        transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+        checkForPlayer(-transform.right * range);*/
+
+
+        checkForPlayer(-transform.right * range);
+        checkForPlayer(transform.right * range);
+
+        if (movingLeft)
+        {
+            //check to see if player is on the left
+
+            if (transform.position.x > leftEdge)
+            {
+                transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
+                transform.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else
+            {
+                movingLeft = false;
+            }
+
+        }
+        else //Moving right
+        {
+            //check to see if player is on the right
+
+            if (transform.position.x < rightEdge)
+            {
+                transform.position = new Vector2(transform.position.x + speed * Time.deltaTime, transform.position.y);
+                transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else
+            {
+                movingLeft = true;
+            }
+
+        }
+        //checkForPlayer(transform.right * range);
 
         if (onGround())
         {
@@ -73,12 +121,20 @@ public class WolfAttack : EnemyDamage
 
     private void checkForPlayer(Vector3 direction)
     {
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, new Vector3(1f, 1f, 1f), 0, direction, range, playerLayer);
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position,
+            new Vector2(1f, 1f), 0, direction, range, playerLayer);
         if (hit.collider != null && !attacking)
         {
             attacking = true;
-            speed = speed * -Mathf.Sign(direction.x);
-            //cooldownTimer = 0;
+            cooldownTimer = 0;
+            if (Mathf.Sign(direction.x) < 0)
+            {
+                movingLeft = true;
+            } else
+            {
+                movingLeft = false;
+            }
+            //Debug.Log("FOUND PLAYER " + speed);
         }
         else
         {
