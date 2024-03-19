@@ -1688,6 +1688,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9029020627763197071, guid: 8d299c7e10c5f4b1084a3cf20f858396, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6493,7 +6497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5999d3ba8d15740fc813beccf2145108, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  input: A userper... in the woods... you can save me... free us...
+  input: A usurper... in the woods... you can save me... free us...
   textColor: {r: 0.2232556, g: 0.2735849, b: 0.23164383, a: 1}
   textFont: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   delay: 0.1

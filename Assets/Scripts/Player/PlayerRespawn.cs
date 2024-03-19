@@ -44,7 +44,7 @@ public class PlayerRespawn : MonoBehaviour
             anim.ResetTrigger("death");
             anim.Play("PlayerIdle");
             //Move camera to checkpoint as well (Checkpoint needs to be child of room object)
-            Camera.main.GetComponent<CameraController>().moveToNewRoom(currCheckpoint.parent, false);
+            Camera.main.GetComponent<CameraController>().moveToNewRoom(currCheckpoint, false);
         }
     }
 
