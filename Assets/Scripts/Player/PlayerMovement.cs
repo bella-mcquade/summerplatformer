@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Handles jumping
         if(Input.GetAxisRaw("Vertical") > 0.5 && onGround()){
-            SoundManager.instance.playSound(sound);
+            //SoundManager.instance.playSound(sound);
             body.velocity = new Vector2(body.velocity.x, jump);
             //body.AddForce(new Vector2(body.velocity.x, jump ));
         }

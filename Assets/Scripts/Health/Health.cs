@@ -85,9 +85,16 @@ public class Health : MonoBehaviour
     {
         //player dead animation
         anim.SetTrigger("death");
+        if (this.gameObject.tag == "Player")
+        {
+            // If player -> freeze and start death animation
+            GetComponent<PlayerMovement>().enabled = false;
+        } else
+        {
+            // Turn off object
+            gameObject.SetActive(false);
+        }
         GetComponent<PlayerMovement>().enabled = false;
-        //Do this for now but delete later once you do the animations.
-        //GetComponent<PlayerRespawn>().respawn();
     }
 
     private IEnumerator invulnerability()

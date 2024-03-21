@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
 
         if (!bossRoom) {
             //Follow Player
-            transform.position = new Vector3(player.position.x + lookAhead, player.position.y, transform.position.z);
+            transform.position = new Vector3(player.position.x + ahead, player.position.y + ahead, transform.position.z);
             //lookAhead = Mathf.Lerp(lookAhead, ahead * player.localScale.x, Time.deltaTime * camSpeed);
         }
     }

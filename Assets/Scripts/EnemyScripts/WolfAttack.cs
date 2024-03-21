@@ -79,6 +79,11 @@ public class WolfAttack : EnemyDamage
         {
             //check to see if player is on the left
 
+            if (onGround())
+            {
+                checkForGround(-transform.right);
+            }
+
             if (transform.position.x > leftEdge)
             {
                 transform.position = new Vector2(transform.position.x - speed * Time.deltaTime, transform.position.y);
@@ -93,6 +98,10 @@ public class WolfAttack : EnemyDamage
         else //Moving right
         {
             //check to see if player is on the right
+            if (onGround())
+            {
+                checkForGround(transform.right);
+            }
 
             if (transform.position.x < rightEdge)
             {
@@ -107,7 +116,7 @@ public class WolfAttack : EnemyDamage
         }
         //checkForPlayer(transform.right * range);
 
-        if (onGround())
+        /*if (onGround())
         {
             //body.velocity = new Vector2(body.velocity.x, jump);
             if (speed > 0) {
@@ -116,7 +125,7 @@ public class WolfAttack : EnemyDamage
             {
                 checkForGround(transform.right);
             }
-        }
+        }*/
     }
 
     private void checkForPlayer(Vector3 direction)

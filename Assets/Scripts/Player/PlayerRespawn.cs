@@ -52,7 +52,7 @@ public class PlayerRespawn : MonoBehaviour
     {
         if (collision.transform.tag == "Checkpoint")
         {
-            SoundManager.instance.playSound(sound);
+            //SoundManager.instance.playSound(sound);
             currCheckpoint = collision.transform;
 
             //Once activated can't be activated again. Disable collider.

@@ -37446,7 +37446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0.5
   player: {fileID: 738624465}
-  ahead: 0
+  ahead: 1
   camSpeed: 2
 --- !u!212 &1951629622
 SpriteRenderer:
