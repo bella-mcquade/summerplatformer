@@ -56,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         cooldown = 0;
-        SoundManager.instance.playSound(sound);
+        //SoundManager.instance.playSound(sound);
 
         //anim.SetTrigger("attack");
 

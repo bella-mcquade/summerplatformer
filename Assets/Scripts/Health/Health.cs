@@ -38,7 +38,7 @@ public class Health : MonoBehaviour
     //Allows enemies to damage player.
     public void takeDamage(float damage)
     {
-        SoundManager.instance.playSound(sound);
+        //SoundManager.instance.playSound(sound);
         //Basically caps currHealth - damage at 0 or startHealth
         currHealth = Mathf.Clamp(currHealth - damage, 0, startHealth);
 
@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
 
         } else
         {
-            death();
+            this.death();
         }
     }
 
@@ -89,12 +89,7 @@ public class Health : MonoBehaviour
         {
             // If player -> freeze and start death animation
             GetComponent<PlayerMovement>().enabled = false;
-        } else
-        {
-            // Turn off object
-            gameObject.SetActive(false);
         }
-        GetComponent<PlayerMovement>().enabled = false;
     }
 
     private IEnumerator invulnerability()
